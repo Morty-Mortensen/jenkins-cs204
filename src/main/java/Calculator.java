@@ -50,6 +50,7 @@ class Calculator {
             return n;
         }
 
+
         return fibonacciNumberFinder(n - 1) + fibonacciNumberFinder(n - 2);
     }
 
