@@ -21,6 +21,10 @@ class Calculator {
     }
 
     int divide(int a , int b){
+        if (b == 0) {
+            throw new ArithmeticException("/ by zero");
+        }
+
         return a / b;
     }
 
@@ -43,7 +47,7 @@ class Calculator {
      */
     int fibonacciNumberFinder(int n){
         if (n < 2) {
-            return 1;
+            return n;
         }
         return fibonacciNumberFinder(n - 1) + fibonacciNumberFinder(n - 2);
     }
