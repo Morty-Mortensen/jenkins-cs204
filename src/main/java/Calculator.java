@@ -1,3 +1,6 @@
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 class Calculator {
 
@@ -39,7 +42,10 @@ class Calculator {
     etc
      */
     int fibonacciNumberFinder(int n){
-        return 0;
+        if (n < 2) {
+            return 1;
+        }
+        return fibonacciNumberFinder(n - 1) + fibonacciNumberFinder(n - 2);
     }
 
 
@@ -51,7 +57,26 @@ class Calculator {
     if int a = 16 then this method returns: 10000
      */
     String intToBinaryNumber(int n){
-        return null;
+        if (n == 0) {
+            return "0";
+        }
+
+        // Creating and assigning binary array size
+        int[] binary = new int[35];
+        int id = 0;
+
+        // Number should be positive
+        while (n > 0) {
+            binary[id++] = n % 2;
+            n = n / 2;
+        }
+
+        // Print Binary
+        StringBuilder builder = new StringBuilder();
+        for (int i = id - 1; i >= 0; i--)
+            builder.append(binary[i]);
+
+        return builder.toString();
     }
 
     /*
@@ -63,8 +88,10 @@ class Calculator {
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
     String createUniqueID(String n){
-
-        return null;
+        byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        String generatedString = new String(array, StandardCharsets.UTF_8);
+        return n + generatedString;
     }
 
 
